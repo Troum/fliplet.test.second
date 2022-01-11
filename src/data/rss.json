@@ -1,0 +1,20 @@
+{
+  "sources": [
+    {
+      "link": "https://feeds.bbci.co.uk/news/rss.xml",
+      "name": "BBC News"
+    },
+    {
+      "link": "https://www.buzzfeed.com/uk/index.xml",
+      "name": "Buzzfeed"
+    },
+    {
+      "link": "https://fliplet.com/feed",
+      "name": "Fliplet"
+    },
+    {
+      "link": "https://www.ft.com/news-feed",
+      "name": "FT"
+    }
+  ]
+}

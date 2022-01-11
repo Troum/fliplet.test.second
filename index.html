@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./dist/main.css">
+</head>
+<body class="container-fluid p-0">
+<div id="loading-alert" class="alert alert-secondary visually-hidden">Loading...</div>
+
+<!-- Error state UI -->
+<div id="error-alert" class="alert alert-danger visually-hidden">
+    <h5>Unable to load feed</h5>
+    <!-- Show error message, if applicable -->
+    Feed could not be converted, probably not a valid RSS feed.<br>
+    <small><a href="#">Open feed in a new tab</a></small>
+</div>
+<div id="links"></div>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 p-4" id="feeds"></div>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="pagination"></div>
+
+<script id="source-links-template" type="text/x-handlebars-template">
+    <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">RSS feeds</h1>
+                <p class="lead text-muted">Click to load feed</p>
+                <div class="btn-group">
+                    {{#each links}}
+                        <a href="#" class="btn btn-outline-secondary" data-url="{{ link }}">{{ name }}</a>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </section>
+</script>
+<script id="pagination-template" type="text/x-handlebars-template">
+    <section class="py-5 text-center container-fluid">
+        <div class="row py-lg-5">
+            <nav class="mx-auto">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item pagination-prev"><a class="page-link" href="#">&laquo;</a></li>
+
+                    {{#each pages}}
+                        <li class="page-item" data-page="{{this}}"><a class="page-link" href="#">{{this}}</a></li>
+                    {{/each}}
+
+                    <li class="page-item pagination-next"><a class="page-link" href="#">&raquo;</a></li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+</script>
+<script id="rss-template" type="text/x-handlebars-template">
+    <div class="col">
+                <div class="card shadow-sm">
+                    <!-- Post thumbnail, if available -->
+                    <img alt="RSS image" src="{{ img }}">
+                    <div class="card-body">
+                        <!-- Post title -->
+                        <h5>{{ title }}</h5>
+                        <!-- Post description -->
+                        <p class="card-text"><small>{{ content }}</small></p>
+                        <p><a href="{{link}}">Read more &rarr;</a></p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">{{ date }}</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</script>
+<script src="./dist/main.js"></script>
+</body>
+</html>
